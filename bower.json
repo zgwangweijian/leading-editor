@@ -1,0 +1,30 @@
+{
+  "name": "leading-editor",
+  "version": "1.0.0",
+  "homepage": "https://github.com/zgwangweijian/leading-editor",
+  "authors": [
+    "wangwj <zgwangweijian@163.com>"
+  ],
+  "description": "leadingsoft datepicker for angularjs",
+  "main": [
+    "./dist/leading-editor.js",
+    "./dist/leading-editor.css"
+  ],
+  "keywords": [
+    "leadingsoft",
+    "editor",
+    "angular",
+    "ckeditor"
+  ],
+  "ignore": [
+    ".gitignore",
+    "README.md",
+    "package.json",
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular": ">=1.2.14 <1.5.0"
+  }
+}
