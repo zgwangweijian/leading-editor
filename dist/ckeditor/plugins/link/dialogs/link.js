@@ -94,13 +94,13 @@
                 element.removeAttributes(attributes.removed);
 
 
-                if (data.linkText && initialLinkText != data.linkText) {
+                if (data.linkText && initialLinkText !== data.linkText) {
                     // Display text has been changed.
                     newText = data.linkText;
-                } else if (href == textView || data.type == 'email' && textView.indexOf('@') != -1) {
+                } else if (href === textView || data.type === 'email' && textView.indexOf('@') !== -1) {
                     // Update text view when user changes protocol (http://dev.ckeditor.com/ticket/4612).
                     // Short mailto link text view (http://dev.ckeditor.com/ticket/5736).
-                    newText = data.type == 'email' ? data.email.address : attributes.set['data-cke-saved-href'];
+                    newText = data.type === 'email' ? data.email.address : attributes.set['data-cke-saved-href'];
                 }
 
                 if (newText) {
@@ -150,19 +150,18 @@
         var linkTypeChanged = function () {
             var dialog = this.getDialog(),
                 partIds = ['urlOptions', 'anchorOptions', 'emailOptions'],
-                typeValue = this.getValue(),
-                uploadTab = dialog.definition.getContents('upload'),
-                uploadInitiallyHidden = uploadTab && uploadTab.hidden;
+                typeValue = this.getValue();
+
+            var hasFileBrowser = !!uploadUrl && !!downloadUrl;
 
             if (typeValue === 'url') {
                 if (editor.config.linkShowTargetTab)
                     dialog.showPage('target');
-                if (!uploadInitiallyHidden)
+                if (hasFileBrowser)
                     dialog.showPage('upload');
             } else {
                 dialog.hidePage('target');
-                if (!uploadInitiallyHidden)
-                    dialog.hidePage('upload');
+                dialog.hidePage('upload');
             }
 
             for (var i = 0; i < partIds.length; i++) {
@@ -218,7 +217,7 @@
         var setFileInfo = function (fileInfo, that) {
             var dialog = that.getDialog();
             var urlOptions = "http://";
-            if(window.location.protocol.indexOf("https") !== -1){
+            if (window.location.protocol.indexOf("https") !== -1) {
                 urlOptions = "https://";
             }
             var href = urlOptions + window.location.host + downloadUrl + "/" + fileInfo.id + "?type=original";
@@ -285,7 +284,6 @@
                                 label: commonLang.protocol,
                                 'default': 'http://',
                                 items: [
-                                    // Force 'ltr' for protocol names in BIDI. (http://dev.ckeditor.com/ticket/5433)
                                     ['http://\u200E', 'http://'],
                                     ['https://\u200E', 'https://'],
                                     ['ftp://\u200E', 'ftp://'],
@@ -372,14 +370,8 @@
                                 if (!this.getDialog().getContentElement('info', 'linkType'))
                                     this.getElement().show();
                             }
-                        },
-                            {
-                                type: 'button',
-                                id: 'browse',
-                                hidden: 'true',
-                                filebrowser: 'info:url',
-                                label: commonLang.browseServer
-                            }]
+                        }
+                        ]
                     },
                     {
                         type: 'vbox',
@@ -496,7 +488,7 @@
                             validate: function () {
                                 var dialog = this.getDialog();
 
-                                if (!dialog.getContentElement('info', 'linkType') || dialog.getValueOf('info', 'linkType') != 'email')
+                                if (!dialog.getContentElement('info', 'linkType') || dialog.getValueOf('info', 'linkType') !== 'email')
                                     return true;
 
                                 var func = CKEDITOR.dialog.validate.notEmpty(linkLang.noEmail);
@@ -745,6 +737,7 @@
                     id: 'upload',
                     label: linkLang.upload,
                     title: linkLang.upload,
+                    hidden: true,
                     elements: [
                         {
                             id: 'selectFile',
@@ -1007,15 +1000,15 @@
                 if (!editor.config.linkShowAdvancedTab)
                     this.hidePage('advanced'); //Hide Advanded tab.
 
-                if (!editor.config.linkShowTargetTab) up
-                this.hidePage('target'); //Hide Target tab.
+                if (!editor.config.linkShowTargetTab)
+                    this.hidePage('target'); //Hide Target tab.
             },
             // Inital focus on 'url' field if link is of type URL.
             onFocus: function () {
                 var linkType = this.getContentElement('info', 'linkType'),
                     urlField;
 
-                if (linkType && linkType.getValue() == 'url') {
+                if (linkType && linkType.getValue() === 'url') {
                     urlField = this.getContentElement('info', 'url');
                     urlField.select();
                 }
