@@ -57,7 +57,7 @@
                                         }
                                         _updateByRender = false;
                                     });
-                                    _self.editor.on("'blur", function (evt) {
+                                    _self.editor.on("blur", function (evt) {
                                         ctrl.$setViewValue(evt.editor.getData());
                                         if (!_updateByRender) {
                                             if (!$scope.$$phase) {

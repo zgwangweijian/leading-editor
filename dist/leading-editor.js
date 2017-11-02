@@ -1,7 +1,7 @@
 /*!
  * leading-editor
  * 
- * Version: 1.0.3 - 2017-11-02T07:53:57.735Z
+ * Version: 1.0.4 - 2017-11-02T09:01:00.715Z
  * License: 
  */
 
@@ -65,7 +65,7 @@
                                         }
                                         _updateByRender = false;
                                     });
-                                    _self.editor.on("'blur", function (evt) {
+                                    _self.editor.on("blur", function (evt) {
                                         ctrl.$setViewValue(evt.editor.getData());
                                         if (!_updateByRender) {
                                             if (!$scope.$$phase) {
