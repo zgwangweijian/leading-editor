@@ -57,6 +57,15 @@
                                         }
                                         _updateByRender = false;
                                     });
+                                    _self.editor.on("'blur", function (evt) {
+                                        ctrl.$setViewValue(evt.editor.getData());
+                                        if (!_updateByRender) {
+                                            if (!$scope.$$phase) {
+                                                $scope.$apply();
+                                            }
+                                        }
+                                        _updateByRender = false;
+                                    });
                                     if (_self.modelContent && _self.modelContent.length > 0) {
                                         _self.setEditorContent();
                                     }
