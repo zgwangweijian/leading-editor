@@ -1,7 +1,7 @@
 /*!
  * leading-editor
  * 
- * Version: 1.0.5 - 2017-11-03T03:19:51.070Z
+ * Version: 1.0.6 - 2017-11-17T07:37:34.083Z
  * License: 
  */
 

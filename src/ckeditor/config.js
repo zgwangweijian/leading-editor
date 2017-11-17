@@ -3,11 +3,22 @@
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
 
-CKEDITOR.editorConfig = function( config ) {
-	// Define changes to default configuration here. For example:
-	// config.language = 'fr';
-	// config.uiColor = '#AADC6E';
+CKEDITOR.editorConfig = function (config) {
+    // Define changes to default configuration here. For example:
+    // config.language = 'fr';
+    // config.uiColor = '#AADC6E';
+
     config.language = 'zh-CN';
+    config.pasteFilter = null; //粘贴过滤器设置为null 即可
+    config.allowedContent = {//内容规则 允许的标签
+        $1: {
+            // Use the ability to specify elements as an object.
+            elements: CKEDITOR.dtd,
+            attributes: true,
+            styles: true,
+            classes: true
+        }
+    };
     config.extraPlugins = 'link,leadingimage';
 
     config.toolbar = "Common";
