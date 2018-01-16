@@ -1,6 +1,6 @@
 {
   "name": "leading-editor",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "homepage": "https://github.com/zgwangweijian/leading-editor",
   "authors": [
     "wangwj <zgwangweijian@163.com>"
@@ -10,7 +10,7 @@
     "./dist/leading-editor.js",
     "./dist/leading-editor.css"
   ],
-  "keywords": [66
+  "keywords": [
     "leadingsoft",
     "editor",
     "angular",
